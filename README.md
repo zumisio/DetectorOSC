@@ -49,10 +49,19 @@ Example:
   `(x, y)`, `(x+w, y)`, `(x, y+h)`, `(x+w, y+h)`,
   and the center is `(x + w/2, y + h/2)`.
 
-### Max/MSP example
+### Max/MSP
 
 Requires the [odot](https://github.com/CNMAT/CNMAT-odot) package
 (install via Max Package Manager).
+
+Two example patches are included in this repository:
+
+| File | Description |
+|------|-------------|
+| `example_osc_monitor.maxpat` | Displays raw OSC values (x, y, w, h, confidence) for person 1. Useful for debugging and verifying the data stream. |
+| `example_visualizer.maxpat` | Draws color-coded bounding boxes for multiple people on an `lcd` object. Requires `detectorosc_draw.js` in the same folder. |
+
+#### Routing basics
 
 ```
 [udpreceive 8000]
@@ -69,3 +78,5 @@ Requires the [odot](https://github.com/CNMAT/CNMAT-odot) package
 
 `/person/1/x 0.5` → after `[OSC-route /person]` → `/1/x 0.5` →
 matches `/1` → `/x 0.5` → matches `/x` → outputs `0.5`.
+
+Change `/person` to any label the model detects (e.g. `/car`, `/dog`).
