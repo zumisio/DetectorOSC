@@ -49,26 +49,23 @@ Example:
   `(x, y)`, `(x+w, y)`, `(x, y+h)`, `(x+w, y+h)`,
   and the center is `(x + w/2, y + h/2)`.
 
-### Legacy format (kept for backward compatibility)
-
-```
-/<label> <string: label> <float: confidence>
-```
-
-Example: `/person person 0.87`
-
 ### Max/MSP example
+
+Requires the [odot](https://github.com/CNMAT/CNMAT-odot) package
+(install via Max Package Manager).
 
 ```
 [udpreceive 8000]
 |
-[route /person]
+[OSC-route /person]
 |
-[route count 1 2 3 4]
-        |
-        [route x y w h confidence]
+[OSC-route /count /1 /2 /3 /4]
+                   |
+                   [OSC-route /x /y /w /h /confidence]
 ```
 
-`/person/count` arrives as `count <n>` after `[route /person]`, and
-`/person/1/x …` arrives as `1 x <float>`, so a second `[route 1 2 3 4]`
-followed by `[route x y w h confidence]` splits it per person and per value.
+`/person/count 2` → after `[OSC-route /person]` → `/count 2` →
+`[OSC-route /count /1 /2 /3 /4]` matches `/count` and outputs `2`.
+
+`/person/1/x 0.5` → after `[OSC-route /person]` → `/1/x 0.5` →
+matches `/1` → `/x 0.5` → matches `/x` → outputs `0.5`.

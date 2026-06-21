@@ -86,7 +86,6 @@ extension OSCManager {
     /// - `/<label>/<trackID>/x|y|w|h|confidence [float]` : 値ごとに個別アドレスで送る。
     ///   座標は正規化(0〜1)・左上原点。TouchDesignerのOSC In CHOPでそのまま
     ///   `person/1/x` のようなチャンネル名になるよう、複数引数ではなく1値1アドレスにしている。
-    /// - `/<label> [label, confidence]` : 旧フォーマット(後方互換)
     ///
     /// `isFrontCamera` / `isPortrait` はDetectionOverlayViewの画面描画と同じ向き補正を
     /// 適用するためのフラグ。動画ファイルモードは省略値(バックカメラ+縦向き相当)でよい。
@@ -121,12 +120,6 @@ extension OSCManager {
             detectionMessages.append(OSCMessage("\(prefix)/w", values: [Float(box.width)]))
             detectionMessages.append(OSCMessage("\(prefix)/h", values: [Float(box.height)]))
             detectionMessages.append(OSCMessage("\(prefix)/confidence", values: [detection.confidence]))
-
-            // 旧フォーマット(後方互換)
-            detectionMessages.append(OSCMessage(
-                "/\(label)",
-                values: [detection.label, detection.confidence]
-            ))
         }
 
         let messages = countMessages + detectionMessages
