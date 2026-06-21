@@ -11,3 +11,8 @@ Pods/
 
 # macOS
 .DS_Store
+
+# Logo assets (private)
+logo.ai
+logo.jpg
+logo_dark.jpg
