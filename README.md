@@ -1,4 +1,3 @@
-<img width="1246" height="688" alt="example_osc_monitor" src="https://github.com/user-attachments/assets/c3bce564-cf81-4740-ac0d-89715ac5d09e" />
 # DetectorOSC
 
 iOS app that detects objects (YOLOv8) from the camera or a video file and streams the results over OSC.
@@ -81,3 +80,4 @@ Two example patches are included in this repository:
 matches `/1` → `/x 0.5` → matches `/x` → outputs `0.5`.
 
 Change `/person` to any label the model detects (e.g. `/car`, `/dog`).
+<img width="1246" height="688" alt="example_osc_monitor" src="https://github.com/user-attachments/assets/c3bce564-cf81-4740-ac0d-89715ac5d09e" />
