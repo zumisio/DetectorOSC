@@ -1,6 +1,7 @@
 # DetectorOSC
 
 iOS app that detects objects (YOLOv8) from the camera or a video file and streams the results over OSC.
+https://apps.apple.com/jp/app/detectorosc/id6742735974
 
 ## OSC Output Format
 
